@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<h3 class="fw-bold border-bottom pb-3 mb-5">Research</h3>
+{% for topic in site.data.settings.research %}
+<div class="row g-5 mb-5">
+  <div class="{% if topic.image %}col-md-6{% else %}col-md-12{% endif %}">
+    <h5>{{ topic.name }}</h5>
+    <p style="text-align: justify; text-justify: inter-word;">{{ topic.description }}</p>
+    {% if topic.link %}<p><a href="{{ topic.link.url }}">{{ topic.link.text }} →</a></p>{% endif %}
+  </div>
+  {% if topic.image %}
+  <div class="col-md-6">
+    <img src="{{ site.github.url }}/{{ topic.image }}" alt="{{ topic.name }}" width="100%">
+  </div>
+  {% endif %}
+</div>
+{% endfor %}

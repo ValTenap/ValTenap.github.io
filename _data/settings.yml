@@ -1,0 +1,44 @@
+menu:
+- {name: 'Publications', url: '/publications/'}
+- {name: 'Research', url: '/research/'}
+- {name: 'CV', url: '/cv/'}
+- {name: 'Contact', url: '/contact/'}
+
+# Research topics shown on /research/. "image" is optional.
+research:
+- name: 'Polarization Steganography'
+  description: 'I study how the spatially varying polarization of partially polarized vector beams can be used to hide information. By engineering a beam whose polarization states fill a prescribed region of the Poincaré sphere, positions in the transverse plane map onto polarization states, so a hidden pattern only appears after applying the right spatial mask and a spatially resolved Stokes measurement. This work combines q-plate beam shaping, Stokes polarimetry, and numerical simulation, and explores how to quantify the security of such schemes.'
+  image: 'assets/img/research_steganography.png'
+  link: {text: 'Read the paper', url: 'https://arxiv.org/abs/2603.11427'}
+
+- name: 'Volume Holographic Gratings as Generalized Beamsplitters'
+  description: 'In the Lundeen Lab I work on volume holographic gratings as generalized beamsplitters — compact elements that can split, combine, and interfere several optical modes at once. My part of the project, in collaboration with the Singular Optics Group at Wrocław University of Science and Technology, focuses on the experimental proof of principle: two-mode operation and a three-port device with phase control.'
+  image: 'assets/img/research_gratings.png'
+
+- name: 'Polarization Response of Spaceplates'
+  description: 'Spaceplates are nonlocal optical elements that compress free-space propagation into a thin device. Together with my group I characterize how the polarization of light changes alongside the compression in different spaceplate designs, using motorized Stokes polarimetry across a range of incidence angles.'
+  image: 'assets/img/research_spaceplates.png'
+
+# Footer icons (Font Awesome brand names). Uncomment and fill in the ones you use.
+social:
+- {icon: 'github', link: 'https://github.com/ValTenap'}
+# - {icon: 'linkedin', link: 'https://www.linkedin.com/in/YOUR-PROFILE/'}
+# - {icon: 'researchgate', link: 'https://www.researchgate.net/profile/YOUR-PROFILE'}
+# - {icon: 'orcid', link: 'https://orcid.org/0000-0000-0000-0000'}
+
+# Shown on /contact/
+contact:
+  name: 'Valeria Tena-Piñon'
+  title: 'PhD Student'
+  department: 'Department of Physics'
+  institution: 'University of Ottawa'
+  group: 'Lundeen Lab'
+  email: 'vtena@uottawa.ca'
+  office: ''          # e.g. 'Advanced Research Complex (ARC), Room ___'
+  image: ''           # e.g. 'assets/img/contact.jpg' — a photo of you
+  blurb: 'I am always happy to talk about polarization optics, structured light, optical security, and photonic devices — feel free to reach out about research, collaborations, or student projects.'
+  profiles:
+  # - {name: 'Google Scholar', url: 'https://scholar.google.com/citations?user=XXXX'}
+  # - {name: 'ORCID', url: 'https://orcid.org/0000-0000-0000-0000'}
+  - {name: 'GitHub', url: 'https://github.com/ValTenap'}
+  # - {name: 'LinkedIn', url: 'https://www.linkedin.com/in/YOUR-PROFILE/'}

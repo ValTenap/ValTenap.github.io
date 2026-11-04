@@ -1,0 +1,11 @@
+- title: 'Graduate Researcher'
+  period: 'Sep 2026 – present'
+  institution: 'Lundeen Lab, University of Ottawa'
+  location: 'Ottawa, Canada'
+  description: 'Experimental proof of principle of volume holographic gratings as generalized beamsplitters (two-mode operation and a three-port device with phase control), in collaboration with the Singular Optics Group at Wrocław University of Science and Technology. Polarization characterization of spaceplate designs with motorized Stokes polarimetry.'
+
+- title: 'Graduate Researcher'
+  period: 'Aug 2024 – Jun 2026'
+  institution: 'Photonics and Mathematical Optics Group, Tecnológico de Monterrey'
+  location: 'Monterrey, Mexico'
+  description: 'Proposed and experimentally demonstrated a polarization-steganography scheme based on partially polarized vector beams generated with q-plates. Built the numerical framework in MATLAB (Stokes parameters, degree of polarization, Poincaré-sphere mapping, spatial-mask design).'

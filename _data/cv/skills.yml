@@ -1,0 +1,8 @@
+- category: 'Experimental'
+  details: 'Stokes polarimetry (manual and motorized), vector-beam generation with q-plates, spatial filtering and masks, single-mode fiber coupling.'
+- category: 'Computational'
+  details: 'MATLAB, Python (numerical simulation, data analysis, scientific figures).'
+- category: 'Scientific communication'
+  details: 'Scientific illustration with SVG and Python; talks and teaching in English and Spanish.'
+- category: 'Languages'
+  details: 'Spanish (native), English (fluent).'

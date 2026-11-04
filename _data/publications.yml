@@ -1,0 +1,34 @@
+# Your publications, newest first.
+# Your own name is highlighted wherever it matches "me" exactly.
+me: 'Valeria Tena-Piñon'
+
+works:
+- title: 'Towards polarization steganography'
+  authors:
+  - 'Valeria Tena-Piñon'
+  - 'Atefeh Akbarpour'
+  - 'Przemyslaw Litwin'
+  - 'Adad Yepiz'
+  - 'Fernando Torres-Leal'
+  - 'Raul I. Hernandez-Aranda'
+  - 'Mateusz Szatkowski'
+  - 'Blas M. Rodriguez-Lara'
+  - 'Benjamin Perez-Garcia'
+  venue: 'APL Photonics'
+  year: 2026
+  volume: ''        # TODO: add volume / article number
+  pages: ''
+  doi: ''           # TODO: add the APL Photonics DOI, e.g. '10.1063/5.0xxxxxx'
+  arxiv: '2603.11427'
+  note: "Editor's Pick"
+
+# Template for the next one:
+# - title: ''
+#   authors: ['', '']
+#   venue: ''
+#   year: 2027
+#   volume: ''
+#   pages: ''
+#   doi: ''
+#   arxiv: ''
+#   note: ''

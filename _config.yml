@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------
+#  Site settings — edit these first
+# ---------------------------------------------------------------
+url: "https://ValTenap.github.io"
+baseurl: ""
+
+title: "Valeria Tena-Piñon"
+description: "PhD Student in Physics | University of Ottawa"
+seo_description: "Valeria Tena-Piñon is a physics PhD student at the University of Ottawa working on polarization optics, structured light, and photonic devices, with research on polarization steganography and volume holographic gratings."
+author: "Valeria Tena-Piñon"
+lang: "en"
+
+# Image shown next to the text on the home page (put your own in assets/img/)
+home_image: "assets/img/home.png"
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title.html
+
+exclude:
+  - README.md
+  - LICENSE.txt
+  - Gemfile
+  - Gemfile.lock
+  - _tools
+  - vendor

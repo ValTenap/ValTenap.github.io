@@ -1,0 +1,136 @@
+<style>
+  .publications-intro {
+    margin-bottom: 1.5rem;
+  }
+
+  .publications-meta {
+    color: #666;
+    font-size: 0.92rem;
+    margin-top: 0.35rem;
+  }
+
+  .publication-year {
+    border-bottom: 1px solid #e5e5e5;
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .publication-list {
+    margin-left: 1.2rem;
+    padding-left: 0.8rem;
+  }
+
+  .publication-item {
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    padding-left: 0.25rem;
+  }
+
+  .publication-title {
+    font-weight: 600;
+  }
+
+  .publication-authors,
+  .publication-venue {
+    display: block;
+    margin-top: 0.15rem;
+  }
+
+  .publication-links {
+    display: block;
+    margin-top: 0.35rem;
+  }
+
+  .publication-link {
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 0.78rem;
+    line-height: 1;
+    margin: 0.15rem 0.35rem 0.15rem 0;
+    padding: 0.32rem 0.45rem;
+    text-decoration: none;
+  }
+
+  .publication-link:hover {
+    text-decoration: none;
+  }
+
+  .publication-note {
+    background: #f3f0ff;
+    border-color: #c9bdf5;
+  }
+
+  .publication-empty {
+    background: #f7f7f7;
+    border-left: 4px solid #bbb;
+    padding: 1rem;
+  }
+</style>
+
+{% assign pubs = site.data.publications %}
+{% assign publication_list = pubs.works %}
+
+<section class="publications-section">
+  {% if include.limit %}
+    <h3 class="fw-bold border-bottom pb-3 mb-4">Selected publications</h3>
+  {% else %}
+    <h3 class="fw-bold border-bottom pb-3 mb-4">Publications</h3>
+  {% endif %}
+
+  {% if publication_list and publication_list.size > 0 %}
+    {% assign previous_year = "" %}
+    {% assign shown = 0 %}
+
+    {% for publication in publication_list %}
+      {% if include.limit and shown >= include.limit %}{% break %}{% endif %}
+      {% assign current_year = publication.year | append: "" %}
+
+      {% if current_year != previous_year %}
+        {% unless shown == 0 %}</ol>{% endunless %}
+        <h4 class="publication-year">{{ current_year }}</h4>
+        <ol class="publication-list">
+        {% assign previous_year = current_year %}
+      {% endif %}
+
+      {% if publication.doi and publication.doi != "" %}
+        {% assign pub_url = "https://doi.org/" | append: publication.doi %}
+      {% elsif publication.arxiv and publication.arxiv != "" %}
+        {% assign pub_url = "https://arxiv.org/abs/" | append: publication.arxiv %}
+      {% else %}
+        {% assign pub_url = publication.url %}
+      {% endif %}
+
+      <li class="publication-item">
+        {% if pub_url and pub_url != "" %}
+          <a class="publication-title" href="{{ pub_url }}">{{ publication.title }}</a>
+        {% else %}
+          <span class="publication-title">{{ publication.title }}</span>
+        {% endif %}
+
+        <span class="publication-authors">
+          {% for author in publication.authors %}{% if author == pubs.me %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+        </span>
+
+        <span class="publication-venue">
+          {% if publication.venue %}<em>{{ publication.venue }}</em>{% endif %}{% if publication.volume and publication.volume != "" %}, {{ publication.volume }}{% endif %}{% if publication.pages and publication.pages != "" %}: {{ publication.pages }}{% endif %}{% if publication.year %}, {{ publication.year }}{% endif %}
+        </span>
+
+        <span class="publication-links">
+          {% if publication.note and publication.note != "" %}<span class="publication-link publication-note">{{ publication.note }}</span>{% endif %}
+          {% if publication.doi and publication.doi != "" %}<a class="publication-link" href="https://doi.org/{{ publication.doi }}">DOI</a>{% endif %}
+          {% if publication.arxiv and publication.arxiv != "" %}<a class="publication-link" href="https://arxiv.org/abs/{{ publication.arxiv }}">arXiv</a>{% endif %}
+          {% if publication.pdf and publication.pdf != "" %}<a class="publication-link" href="{{ site.github.url }}/{{ publication.pdf }}">PDF</a>{% endif %}
+        </span>
+      </li>
+      {% assign shown = shown | plus: 1 %}
+    {% endfor %}
+    {% if shown > 0 %}</ol>{% endif %}
+
+    {% if include.limit and publication_list.size > include.limit %}
+      <p><a href="{{ site.github.url }}/publications/">View all publications →</a></p>
+    {% endif %}
+  {% else %}
+    <div class="publication-empty">No publications listed yet — add them to <code>_data/publications.yml</code>.</div>
+  {% endif %}
+</section>

@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<div class="row g-5 mb-5">
+  <div class="col-md-6">
+    <div style="text-align: justify; text-justify: inter-word; hyphens: auto;">
+      {{ content }}
+    </div>
+  </div>
+  {% if site.home_image and site.home_image != "" %}
+  <div class="col-md-6">
+    <img src="{{ site.github.url }}/{{ site.home_image }}" alt="{{ site.title }}" width="100%">
+  </div>
+  {% endif %}
+</div>
+
+{% if site.posts.size > 0 %}
+<div class="row g-5 mb-5">
+  <div class="col-md-12">
+    <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
+    {% for post in site.posts %}
+      <p><a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

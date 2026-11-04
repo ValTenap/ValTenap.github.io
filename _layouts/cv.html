@@ -1,0 +1,121 @@
+---
+layout: default
+---
+
+{% assign cv = site.data.cv %}
+<div class="row g-5 mb-5">
+  <div class="col-md-12">
+    <h3 class="fw-bold border-bottom pb-3 mb-4">Curriculum Vitae</h3>
+
+    {{ content }}
+
+    {% if cv.education %}
+    <h4 class="fw-bold mt-5 mb-3">Education</h4>
+    {% for item in cv.education %}
+      <div class="mb-4">
+        <div class="d-flex justify-content-between flex-wrap">
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.period }}</span>
+        </div>
+        <div><em>{{ item.institution }}</em>{% if item.location %} · {{ item.location }}{% endif %}</div>
+        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if cv.experience %}
+    <h4 class="fw-bold mt-5 mb-3">Research Experience</h4>
+    {% for item in cv.experience %}
+      <div class="mb-4">
+        <div class="d-flex justify-content-between flex-wrap">
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.period }}</span>
+        </div>
+        <div><em>{{ item.institution }}</em>{% if item.location %} · {{ item.location }}{% endif %}</div>
+        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if cv.teaching %}
+    <h4 class="fw-bold mt-5 mb-3">Teaching</h4>
+    {% for item in cv.teaching %}
+      <div class="mb-3">
+        <div class="d-flex justify-content-between flex-wrap">
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.period }}</span>
+        </div>
+        <div><em>{{ item.institution }}</em></div>
+        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if site.data.publications.works.size > 0 %}
+    <h4 class="fw-bold mt-5 mb-3">Publications</h4>
+    <ol>
+    {% for pub in site.data.publications.works %}
+      <li class="mb-3">
+        <strong>{{ pub.title }}</strong><br>
+        {% for author in pub.authors %}{% if author == site.data.publications.me %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}<br>
+        <em>{{ pub.venue }}</em>{% if pub.volume and pub.volume != "" %} {{ pub.volume }}{% endif %}{% if pub.pages and pub.pages != "" %}, {{ pub.pages }}{% endif %} ({{ pub.year }}){% if pub.note and pub.note != "" %} — {{ pub.note }}{% endif %}.
+        {% if pub.doi and pub.doi != "" %}<a href="https://doi.org/{{ pub.doi }}">DOI</a>{% elsif pub.arxiv and pub.arxiv != "" %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv:{{ pub.arxiv }}</a>{% endif %}
+      </li>
+    {% endfor %}
+    </ol>
+    {% endif %}
+
+    {% if cv.theses %}
+    <h4 class="fw-bold mt-5 mb-3">Theses</h4>
+    {% for item in cv.theses %}
+      <div class="mb-3">
+        <strong>{{ item.title }}</strong><br>
+        {{ item.detail }}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if cv.presentations %}
+    <h4 class="fw-bold mt-5 mb-3">Presentations</h4>
+    {% for item in cv.presentations %}
+      <div class="mb-3">
+        <div class="d-flex justify-content-between flex-wrap">
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.period }}</span>
+        </div>
+        <div>{{ item.detail }}</div>
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if cv.awards %}
+    <h4 class="fw-bold mt-5 mb-3">Awards and Scholarships</h4>
+    {% for item in cv.awards %}
+      <div class="mb-2">
+        <strong>{{ item.period }} · {{ item.title }}</strong>{% if item.institution %}<span> — {{ item.institution }}</span>{% endif %}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if cv.service %}
+    <h4 class="fw-bold mt-5 mb-3">Service and Outreach</h4>
+    {% for item in cv.service %}
+      <div class="mb-3">
+        <div class="d-flex justify-content-between flex-wrap">
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.period }}</span>
+        </div>
+        <div><em>{{ item.institution }}</em></div>
+        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if cv.skills %}
+    <h4 class="fw-bold mt-5 mb-3">Skills</h4>
+    {% for item in cv.skills %}
+      <p><strong>{{ item.category }}:</strong> {{ item.details }}</p>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
