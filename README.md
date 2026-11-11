@@ -1,6 +1,6 @@
 # Valeria Tena-Piñon — personal academic website
 
-Built on the MIT-licensed [academic Jekyll theme](https://github.com/LeNPaul/academic) by Paul Le, with the layout of [mffg1993.github.io](https://mffg1993.github.io).
+Built on the MIT-licensed [academic Jekyll theme](https://github.com/LeNPaul/academic) by Paul Le.
 
 ## Put it online (GitHub Pages)
 1. On GitHub, create a **public** repository named exactly `YOUR-USERNAME.github.io`.
