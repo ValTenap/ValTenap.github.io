@@ -11,7 +11,7 @@ layout: default
     <div class="contact-card">
       <a class="big" href="mailto:{{ c.email }}">{{ c.email }}</a>
       <dl>
-        <dt>Role</dt><dd>{{ c.title }}, {{ c.group }}</dd>
+        <dt>Role</dt><dd>{{ c.title }}, {% if c.group_url %}<a href="{{ c.group_url }}">{{ c.group }}</a>{% else %}{{ c.group }}{% endif %}</dd>
         <dt>Department</dt><dd>{{ c.department }}, {{ c.institution }}</dd>
         <dt>Location</dt><dd>{{ c.address }}</dd>
         {% if c.office and c.office != "" %}<dt>Office</dt><dd>{{ c.office }}</dd>{% endif %}

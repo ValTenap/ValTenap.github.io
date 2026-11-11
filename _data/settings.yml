@@ -6,6 +6,7 @@ menu:
 
 # Footer and contact-page links. Uncomment and fill in the ones you use.
 social:
+- {name: 'Lundeen Lab', link: 'https://photonicquantum.info'}
 - {name: 'GitHub', link: 'https://github.com/ValTenap'}
 # - {name: 'Google Scholar', link: 'https://scholar.google.com/citations?user=XXXX'}
 # - {name: 'ORCID', link: 'https://orcid.org/0000-0000-0000-0000'}
@@ -56,6 +57,7 @@ contact:
   name: 'Valeria Tena Piñón'
   title: 'PhD student in Physics'
   group: 'Lundeen Lab'
+  group_url: 'https://photonicquantum.info'
   department: 'Department of Physics'
   institution: 'University of Ottawa'
   address: 'Ottawa, Ontario, Canada'
