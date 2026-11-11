@@ -1,11 +1,11 @@
 # Your publications, newest first.
 # Your own name is highlighted wherever it matches "me" exactly.
-me: 'Valeria Tena-Piñon'
+me: 'Valeria Tena Piñón'
 
 works:
 - title: 'Towards polarization steganography'
   authors:
-  - 'Valeria Tena-Piñon'
+  - 'Valeria Tena Piñón'
   - 'Atefeh Akbarpour'
   - 'Przemyslaw Litwin'
   - 'Adad Yepiz'

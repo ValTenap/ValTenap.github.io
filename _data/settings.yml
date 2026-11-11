@@ -1,44 +1,65 @@
 menu:
-- {name: 'Publications', url: '/publications/'}
 - {name: 'Research', url: '/research/'}
+- {name: 'Publications', url: '/publications/'}
 - {name: 'CV', url: '/cv/'}
 - {name: 'Contact', url: '/contact/'}
 
-# Research topics shown on /research/. "image" is optional.
-research:
-- name: 'Polarization Steganography'
-  description: 'I study how the spatially varying polarization of partially polarized vector beams can be used to hide information. By engineering a beam whose polarization states fill a prescribed region of the Poincaré sphere, positions in the transverse plane map onto polarization states, so a hidden pattern only appears after applying the right spatial mask and a spatially resolved Stokes measurement. This work combines q-plate beam shaping, Stokes polarimetry, and numerical simulation, and explores how to quantify the security of such schemes.'
-  image: 'assets/img/research_steganography.png'
-  link: {text: 'Read the paper', url: 'https://arxiv.org/abs/2603.11427'}
-
-- name: 'Volume Holographic Gratings as Generalized Beamsplitters'
-  description: 'In the Lundeen Lab I work on volume holographic gratings as generalized beamsplitters — compact elements that can split, combine, and interfere several optical modes at once. My part of the project, in collaboration with the Singular Optics Group at Wrocław University of Science and Technology, focuses on the experimental proof of principle: two-mode operation and a three-port device with phase control.'
-  image: 'assets/img/research_gratings.png'
-
-- name: 'Polarization Response of Spaceplates'
-  description: 'Spaceplates are nonlocal optical elements that compress free-space propagation into a thin device. Together with my group I characterize how the polarization of light changes alongside the compression in different spaceplate designs, using motorized Stokes polarimetry across a range of incidence angles.'
-  image: 'assets/img/research_spaceplates.png'
-
-# Footer icons (Font Awesome brand names). Uncomment and fill in the ones you use.
+# Footer and contact-page links. Uncomment and fill in the ones you use.
 social:
-- {icon: 'github', link: 'https://github.com/ValTenap'}
-# - {icon: 'linkedin', link: 'https://www.linkedin.com/in/YOUR-PROFILE/'}
-# - {icon: 'researchgate', link: 'https://www.researchgate.net/profile/YOUR-PROFILE'}
-# - {icon: 'orcid', link: 'https://orcid.org/0000-0000-0000-0000'}
+- {name: 'GitHub', link: 'https://github.com/ValTenap'}
+# - {name: 'Google Scholar', link: 'https://scholar.google.com/citations?user=XXXX'}
+# - {name: 'ORCID', link: 'https://orcid.org/0000-0000-0000-0000'}
+# - {name: 'LinkedIn', link: 'https://www.linkedin.com/in/YOUR-PROFILE/'}
+
+# Research topics. They appear as cards on the home page and as full sections on /research/.
+# "card" is the image on the home page; "figures" are shown on the research page.
+research:
+- id: 'gratings'
+  name: 'Volume gratings as generalized beamsplitters'
+  where: 'Lundeen Lab, University of Ottawa, since 2026'
+  short: 'Thick holographic gratings written with a Lloyd mirror, used to split and recombine several optical modes at once.'
+  card: 'assets/img/lloyd_mirror_card.jpg'
+  body:
+  - 'A volume grating is a sinusoidal refractive-index pattern written through the thickness of a photopolymer film. Because it is thick, it only diffracts light arriving at the Bragg angle, so it couples exactly two plane waves — it is a beamsplitter. Its split ratio is set by the exposure, and its phase by how far the fringes are shifted sideways.'
+  - 'I write these gratings with a Lloyd mirror on a motorized rotation stage: rotating the stage sets the fringe period, and nudging the mirror by a fraction of a micron shifts the fringes. Stacking several gratings in one film (angular multiplexing) is the route to devices with more than two ports. My part of the project is the experimental proof of principle of two-mode operation and a three-port device with phase control, in collaboration with the Singular Optics Group at Wrocław University of Science and Technology.'
+  figures:
+  - {image: 'assets/img/lloyd_mirror.jpg', dark: true, caption: 'A Lloyd mirror interferometer, rendered in Blender. Half of the expanded HeNe beam reaches the film directly and half after reflecting off the mirror; the two halves interfere in the film.'}
+
+- id: 'steganography'
+  name: 'Polarization steganography'
+  where: 'MSc work at Tecnológico de Monterrey, 2024–2026'
+  short: 'Hiding a message in the polarization of light, so that it only appears with both a spatial mask and Stokes polarimetry.'
+  card: 'assets/img/curve_heart.png'
+  card_contain: true
+  link: {text: 'Read the paper', url: 'https://arxiv.org/abs/2603.11427'}
+  body:
+  - 'A partially polarized vector beam, made by sending light from an extended LED source through a q-plate, carries a different polarization state at every point of its cross-section. Its Stokes parameters map the transverse plane onto the equatorial disk of the Poincaré sphere, so a path drawn across the beam corresponds to a curve on the sphere.'
+  - 'That mapping becomes a two-key scheme. The spatial mask selects a path through the beam, and Stokes polarimetry turns that path into a curve on the sphere. With only one of the two keys, the camera sees an unstructured ring or a uniformly filled disk; with both, the hidden shape appears. We demonstrated it with printed masks and numerical filters for five shapes, and the work was published in APL Photonics as an Editor''s Pick.'
+  figures:
+  - {image: 'assets/img/steg_mapping.png', caption: 'A path C across the beam (left) maps onto a curve on the (s₁, s₂) disk of the Poincaré sphere.'}
+  - {strip: ['assets/img/stokes_s0.jpg', 'assets/img/stokes_s1.jpg', 'assets/img/stokes_s2.jpg'], caption: 'Measured Stokes maps of the carrier beam: S₀ (intensity), S₁ and S₂.'}
+  - {image: 'assets/img/steg_setup.png', caption: 'Optical setup: LED source, apertures, linear polarizer, q-plate (q = ½), spatial mask, and Stokes polarimetry on a CCD.'}
+
+- id: 'spaceplates'
+  name: 'Polarization in spaceplates'
+  where: 'Lundeen Lab, University of Ottawa, since 2026'
+  short: 'Measuring how nonlocal optics that compress free space also change the polarization of light.'
+  card: 'assets/img/spaceplate_card.png'
+  body:
+  - 'Spaceplates are nonlocal optical elements that replace a length of free-space propagation with a much thinner device, a route to flatter cameras and optical systems. Their response depends on the angle of incidence, which means they can also act on polarization.'
+  - 'Together with my group I characterize how polarization changes alongside the compression in different spaceplate designs, using motorized Stokes polarimetry (quarter-wave plate, half-wave plate, a second quarter-wave plate and a polarizing beamsplitter onto a single camera) over a sweep of incidence angles from −5° to 5°.'
+  figures:
+  - {image: 'assets/img/spaceplate_card.png', dark: true, caption: 'A spaceplate reproduces the effect of a longer stretch of free space, so a lens focuses to the same point in a shorter system.'}
 
 # Shown on /contact/
 contact:
-  name: 'Valeria Tena-Piñon'
-  title: 'PhD Student'
+  name: 'Valeria Tena Piñón'
+  title: 'PhD student in Physics'
+  group: 'Lundeen Lab'
   department: 'Department of Physics'
   institution: 'University of Ottawa'
-  group: 'Lundeen Lab'
+  address: 'Ottawa, Ontario, Canada'
   email: 'vtena@uottawa.ca'
-  office: ''          # e.g. 'Advanced Research Complex (ARC), Room ___'
-  image: ''           # e.g. 'assets/img/contact.jpg' — a photo of you
-  blurb: 'I am always happy to talk about polarization optics, structured light, optical security, and photonic devices — feel free to reach out about research, collaborations, or student projects.'
-  profiles:
-  # - {name: 'Google Scholar', url: 'https://scholar.google.com/citations?user=XXXX'}
-  # - {name: 'ORCID', url: 'https://orcid.org/0000-0000-0000-0000'}
-  - {name: 'GitHub', url: 'https://github.com/ValTenap'}
-  # - {name: 'LinkedIn', url: 'https://www.linkedin.com/in/YOUR-PROFILE/'}
+  office: ''          # e.g. 'Advanced Research Complex (ARC), room ___'
+  image: ''           # e.g. 'assets/img/me.jpg'
+  blurb: 'I am happy to talk about polarization optics, structured light, optical security and holographic optical elements. Write to me about research, collaborations or student projects.'

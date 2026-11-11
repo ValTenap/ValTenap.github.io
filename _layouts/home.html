@@ -1,27 +1,117 @@
 ---
 layout: default
 ---
+{% assign pubs = site.data.publications %}
+{% assign paper = pubs.works | first %}
 
-<div class="row g-5 mb-5">
-  <div class="col-md-6">
-    <div style="text-align: justify; text-justify: inter-word; hyphens: auto;">
-      {{ content }}
+<section class="hero" aria-labelledby="hero-name">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-name">Valeria<span>Tena Piñón</span></h1>
+      <p class="role">{{ page.role }}</p>
+      <p class="lede">{{ page.lede }}</p>
+      <div class="hero-links">
+        <a class="btn btn-solid" href="{{ site.baseurl }}/research/">See my research</a>
+        <a class="btn" href="{{ site.baseurl }}/cv/">CV</a>
+        <a class="btn" href="mailto:{{ site.data.settings.contact.email }}">{{ site.data.settings.contact.email }}</a>
+      </div>
+    </div>
+    <figure class="beam" data-q="0.5">
+      <canvas tabindex="0" role="img" aria-label="Animated polarization pattern of a vector beam made with a q-plate of charge one half. Move the pointer, or use the arrow keys, to rotate the input polarizer."></canvas>
+      <figcaption>A q = ½ vector beam. Move across it to rotate the input polarizer: <output>0°</output></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What I work on</h2>
+      <p>{{ page.research_intro }}</p>
+    </div>
+    <div class="projects">
+      {% for t in site.data.settings.research %}
+      <a class="project" href="{{ site.baseurl }}/research/#{{ t.id }}">
+        <div class="frame{% if t.card_contain %} contain{% endif %}"><img src="{{ site.baseurl }}/{{ t.card }}" alt="" loading="lazy"></div>
+        <h3>{{ t.name }}</h3>
+        <p>{{ t.short }}</p>
+        <span class="where">{{ t.where }}</span>
+      </a>
+      {% endfor %}
     </div>
   </div>
-  {% if site.home_image and site.home_image != "" %}
-  <div class="col-md-6">
-    <img src="{{ site.github.url }}/{{ site.home_image }}" alt="{{ site.title }}" width="100%">
-  </div>
-  {% endif %}
-</div>
+</section>
 
-{% if site.posts.size > 0 %}
-<div class="row g-5 mb-5">
-  <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
-    {% for post in site.posts %}
-      <p><a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
-    {% endfor %}
+<section class="bleed" aria-labelledby="lloyd-title">
+  <figure>
+    <img src="{{ site.baseurl }}/assets/img/lloyd_mirror.jpg" alt="3D render of a Lloyd mirror interferometer on an optical table: a red HeNe beam is expanded by two lenses and hits a mirror and a holographic film standing at right angles on a rotation stage, where red interference fringes glow in the film." loading="lazy">
+    <figcaption class="caption">
+      <div>
+        <h3 id="lloyd-title">Writing a beamsplitter with light</h3>
+        <p>In a Lloyd mirror, half of an expanded HeNe beam reaches the photopolymer film directly and half after bouncing off a mirror. The two halves interfere inside the film and are recorded as a thick grating. Rotating the stage changes the fringe period; moving the mirror by a fraction of a micron shifts the fringes, which sets the phase of the beamsplitter.</p>
+      </div>
+      <div class="equation" aria-label="Lambda equals lambda over two sine alpha">
+        Λ = <i>λ</i> / (2 sin <i>α</i>)
+        <small>At <i>λ</i> = 632.8 nm and <i>α</i> = 45°, the fringes are 447.5 nm apart, about a hundredth of the width of a hair.</small>
+      </div>
+    </figcaption>
+  </figure>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Five shapes hidden in a beam</h2>
+      <p>These are measured results from my MSc work. Each shape was hidden in the polarization of a partially polarized vector beam, and it only appeared on the Poincaré sphere when the right spatial mask (inset) and Stokes polarimetry were used together.</p>
+    </div>
+    <div class="curves">
+      {% for c in page.curves %}
+      <figure>
+        <img src="{{ site.baseurl }}/assets/img/{{ c.file }}" alt="Measured polarization states forming a {{ c.name | downcase }} on the Poincaré sphere, with its spatial mask in the corner" loading="lazy">
+        <figcaption>{{ c.name }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
   </div>
-</div>
+</section>
+
+{% if paper %}
+<section class="section">
+  <div class="wrap">
+    {% if paper.doi and paper.doi != "" %}{% assign url = "https://doi.org/" | append: paper.doi %}{% else %}{% assign url = "https://arxiv.org/abs/" | append: paper.arxiv %}{% endif %}
+    <article class="paper">
+      <img src="{{ site.baseurl }}/assets/img/steg_concept.png" alt="Diagram of the scheme: an extended source and q-plate make the carrier beam, whose states fill the equator of the Poincaré sphere; a message and a key mask reveal it." loading="lazy">
+      <div>
+        {% if paper.note and paper.note != "" %}<span class="badge">{{ paper.note }}</span>{% endif %}
+        <h3>{{ paper.title }}</h3>
+        <p class="authors">{% for a in paper.authors %}{% if a == pubs.me %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+        <p class="venue">{{ paper.venue }}, {{ paper.year }}</p>
+        <div class="hero-links">
+          <a class="btn btn-solid" href="{{ url }}">Read the paper</a>
+          <a class="btn" href="{{ site.baseurl }}/publications/">All publications</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
 {% endif %}
+
+<section class="section">
+  <div class="wrap two-col">
+    <div class="prose">
+      <h2>About me</h2>
+      {{ content }}
+    </div>
+    <div>
+      <h2>News</h2>
+      <ol class="timeline">
+        {% for post in site.posts limit: 6 %}
+        <li>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %Y" }}</time>
+          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>

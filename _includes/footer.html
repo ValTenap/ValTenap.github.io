@@ -1,12 +1,9 @@
-<footer class="pt-5 my-5 text-muted border-top">
-  <div class="row">
-    <div class="col-md-6">
-      <small>&copy; {{ site.time | date: "%Y" }} {{ site.author }}</small>
-    </div>
-    <div class="col-md-6 text-md-end social-media-icons">
-      {% for item in site.data.settings.social %}
-        <a href="{{ item.link }}" class="ms-3 fs-5" aria-label="{{ item.icon }}"><i class="fab fa-{{ item.icon }}"></i></a>
-      {% endfor %}
-    </div>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© {{ site.time | date: "%Y" }} {{ site.author }}, Lundeen Lab, University of Ottawa</span>
+    <nav aria-label="Elsewhere">
+      <a href="mailto:{{ site.data.settings.contact.email }}">Email</a>
+      {% for item in site.data.settings.social %}<a href="{{ item.link }}">{{ item.name }}</a>{% endfor %}
+    </nav>
   </div>
 </footer>

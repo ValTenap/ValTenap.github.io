@@ -1,7 +1,27 @@
 ---
 layout: default
 ---
-
-{{ content }}
-
-{% include contact.html %}
+{% assign c = site.data.settings.contact %}
+<div class="wrap">
+  <header class="page-head">
+    <h1>{{ page.title }}</h1>
+    <p>{{ c.blurb }}</p>
+  </header>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <a class="big" href="mailto:{{ c.email }}">{{ c.email }}</a>
+      <dl>
+        <dt>Role</dt><dd>{{ c.title }}, {{ c.group }}</dd>
+        <dt>Department</dt><dd>{{ c.department }}, {{ c.institution }}</dd>
+        <dt>Location</dt><dd>{{ c.address }}</dd>
+        {% if c.office and c.office != "" %}<dt>Office</dt><dd>{{ c.office }}</dd>{% endif %}
+        {% for s in site.data.settings.social %}<dt>{{ s.name }}</dt><dd><a href="{{ s.link }}">{{ s.link | remove: "https://" }}</a></dd>{% endfor %}
+      </dl>
+    </div>
+    {% if c.image and c.image != "" %}
+      <img src="{{ site.baseurl }}/{{ c.image }}" alt="{{ c.name }}" style="border-radius:20px">
+    {% else %}
+      <img src="{{ site.baseurl }}/assets/img/qplate_render.png" alt="Illustration of a q-plate turning a linearly polarized beam into a vector beam" style="border-radius:20px;background:var(--ink)">
+    {% endif %}
+  </div>
+</div>

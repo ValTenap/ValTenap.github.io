@@ -1,30 +1,23 @@
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% assign meta_description = page.description | default: site.seo_description | default: site.description %}
-  {% assign canonical_url = site.url | append: site.baseurl | append: page.url %}
-
-  <title>{% if page.title == "Home" %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
+  {% if page.title == "Home" %}{% assign full_title = site.title %}{% else %}{% assign full_title = page.title | append: " · " | append: site.title %}{% endif %}
+  <title>{{ full_title }}</title>
   <meta name="description" content="{{ meta_description | escape }}">
   <meta name="author" content="{{ site.author | escape }}">
-  <link rel="canonical" href="{{ canonical_url }}">
-
+  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta name="theme-color" content="#101b3a">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{% if page.title == "Home" %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}">
+  <meta property="og:title" content="{{ full_title | escape }}">
   <meta property="og:description" content="{{ meta_description | escape }}">
-  <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:site_name" content="{{ site.title }}">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{% if page.title == "Home" %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}">
-  <meta name="twitter:description" content="{{ meta_description | escape }}">
-
-  <link rel="stylesheet" href="{{ site.github.url }}/assets/libs/bootstrap/bootstrap.min.css">
-  <script defer src="{{ site.github.url }}/assets/libs/fontawesome/all.min.js"></script>
-  <link rel="stylesheet" href="{{ site.github.url }}/assets/css/main.css">
-  <link rel="apple-touch-icon" sizes="152x152" href="{{ site.github.url }}/assets/apple-icon-152x152.png">
-  <link rel="shortcut icon" href="{{ site.github.url }}/assets/favicon.ico">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/lloyd_mirror.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/site.css">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ site.baseurl }}/assets/apple-icon-152x152.png">
+  <link rel="icon" href="{{ site.baseurl }}/assets/favicon.ico">
 </head>

@@ -1,21 +1,35 @@
 ---
 layout: default
 ---
+<div class="wrap">
+  <header class="page-head">
+    <h1>{{ page.title }}</h1>
+    {% if page.lede %}<p>{{ page.lede }}</p>{% endif %}
+  </header>
 
-{{ content }}
-
-<h3 class="fw-bold border-bottom pb-3 mb-5">Research</h3>
-{% for topic in site.data.settings.research %}
-<div class="row g-5 mb-5">
-  <div class="{% if topic.image %}col-md-6{% else %}col-md-12{% endif %}">
-    <h5>{{ topic.name }}</h5>
-    <p style="text-align: justify; text-justify: inter-word;">{{ topic.description }}</p>
-    {% if topic.link %}<p><a href="{{ topic.link.url }}">{{ topic.link.text }} →</a></p>{% endif %}
-  </div>
-  {% if topic.image %}
-  <div class="col-md-6">
-    <img src="{{ site.github.url }}/{{ topic.image }}" alt="{{ topic.name }}" width="100%">
-  </div>
-  {% endif %}
+  {% for t in site.data.settings.research %}
+  <section class="topic" id="{{ t.id }}" aria-labelledby="{{ t.id }}-title">
+    <div>
+      <p class="meta">{{ t.where }}</p>
+      <h2 id="{{ t.id }}-title">{{ t.name }}</h2>
+      {% for para in t.body %}<p>{{ para }}</p>{% endfor %}
+      {% if t.link %}<p><a class="chip" href="{{ t.link.url }}">{{ t.link.text }}</a></p>{% endif %}
+    </div>
+    <div class="topic-media">
+      {% for f in t.figures %}
+        {% if f.strip %}
+        <figure class="strip">
+          {% for s in f.strip %}<img src="{{ site.baseurl }}/{{ s }}" alt="" loading="lazy">{% endfor %}
+          <figcaption>{{ f.caption }}</figcaption>
+        </figure>
+        {% else %}
+        <figure>
+          <img src="{{ site.baseurl }}/{{ f.image }}"{% if f.dark %} class="dark"{% endif %} alt="{{ f.caption | escape }}" loading="lazy">
+          <figcaption>{{ f.caption }}</figcaption>
+        </figure>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
 </div>
-{% endfor %}

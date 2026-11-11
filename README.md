@@ -12,18 +12,21 @@ Built on the MIT-licensed [academic Jekyll theme](https://github.com/LeNPaul/aca
 ## Where to edit things
 | What | File |
 |---|---|
-| Name, tagline, home image | `_config.yml` |
-| Home page text | `index.md` |
-| Menu, research topics, footer icons, contact info | `_data/settings.yml` |
+| Name, tagline | `_config.yml` |
+| Home page text (hero sentence, About me, the five curves) | `index.md` |
+| Menu, research projects (cards + research page), footer links, contact info | `_data/settings.yml` |
 | Publications | `_data/publications.yml` |
-| CV sections | `_data/cv/*.yml` (empty files hide their section) |
-| News / updates | `_posts/YYYY-MM-DD-title.md` |
+| CV sections | `_data/cv/*.yml` (an empty file hides its section) |
+| News | `_posts/YYYY-MM-DD-title.md` |
 | Images | `assets/img/` |
+| Hero animation (q-plate vector beam) | `assets/js/beam.js` |
 
-The figures in `assets/img/` are placeholders made by `_tools/make_figures.py`; swap in your own lab photos or paper figures any time.
+## Where the pictures come from
+- `lloyd_mirror.jpg`: rendered with Blender from `_tools/lloyd_mirror.py` (`pip install bpy`, then `python _tools/lloyd_mirror.py out.png 1800 96`). `_tools/lloyd_mirror.blend` opens in Blender.
+- `spaceplate_card.png`: `_tools/spaceplate_figure.py`.
+- Steganography figures (curves, Stokes maps, setup, concept, q-plate): taken from the MSc thesis defense slides.
 
 ## Open TODOs
-- GitHub username in `_config.yml`
 - APL Photonics DOI/volume in `_data/publications.yml`
-- Profiles (ORCID, Scholar, LinkedIn, GitHub) in `_data/settings.yml`
+- Profiles (ORCID, Scholar, LinkedIn) in `_data/settings.yml`
 - Contact photo + office, TA course name, awards

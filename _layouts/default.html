@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html lang="{{ site.lang | default: "en" }}">
   {% include head.html %}
-  <body>
-    <div class="col-lg-8 mx-auto p-3 py-md-5">
-      {% include header.html %}
+  <body class="{% if page.dark_header %}is-dark{% endif %}">
+    {% include header.html %}
+    <main id="main">
       {{ content }}
-      {% include footer.html %}
-    </div>
+    </main>
+    {% include footer.html %}
+    {% if page.scripts %}{% for s in page.scripts %}<script src="{{ site.baseurl }}/assets/js/{{ s }}" defer></script>{% endfor %}{% endif %}
   </body>
 </html>

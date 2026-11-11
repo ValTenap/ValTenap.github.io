@@ -1,26 +1,21 @@
 ---
 layout: home
 title: "Home"
+dark_header: true
+scripts: [beam.js]
+role: "PhD student in Physics at the University of Ottawa, Lundeen Lab"
+lede: "I work with the polarization and spatial structure of light: how to shape it, measure it, and use it, from hiding messages in a beam to writing holographic optics that split light several ways at once."
+research_intro: "My projects share one question: what can you do with light once you control its polarization and spatial structure? Click a project for the details and figures."
+curves:
+- {name: 'Square frame', file: 'curve_square.png'}
+- {name: 'Astroid', file: 'curve_astroid.png'}
+- {name: 'Cardioid', file: 'curve_cardioid.png'}
+- {name: 'Heart', file: 'curve_heart.png'}
+- {name: 'Lissajous', file: 'curve_lissajous.png'}
 ---
 
-I am a physics PhD student at the **University of Ottawa** working in **polarization optics, structured light, and photonic devices**. I am interested in how the spatial and polarization structure of light can be engineered, measured, and used — from hiding information in the polarization of a beam to building compact optical elements that split and combine many modes at once.
+I trained as a physicist at the **Tecnológico de Monterrey** in Mexico, where I studied Engineering Physics and then did an MSc in Nanotechnology in the Photonics and Mathematical Optics Group with Dr. Benjamín Pérez-García. My thesis, *Structured Light as a Platform for Optical Cryptography and Quantum Information Encoding*, led to our paper on polarization steganography.
 
----
+In September 2026 I moved to Ottawa to start my PhD in Physics in **Jeff Lundeen's lab**, where I also work as a teaching assistant.
 
-## Current Research
-
-I am a member of the **Lundeen Lab**, where my work focuses on:
-
-- **Volume holographic gratings as generalized beamsplitters** — experimental proof of principle of two-mode operation and a three-port device with phase control.
-- **Spaceplates** — characterizing how polarization changes together with free-space compression in different spaceplate designs.
-- **Polarization steganography** — hiding information in the spatially varying polarization of partially polarized vector beams.
-
-[Explore my research →](/research/)
-
----
-
-## About Me
-
-My path in optics began at **Tecnológico de Monterrey**, where I studied Engineering Physics and then completed an MSc in Nanotechnology in the Photonics and Mathematical Optics Group under Dr. Benjamín Pérez-García. My master's thesis explored structured light as a platform for optical cryptography and quantum information encoding, and led to our work on [polarization steganography](https://arxiv.org/abs/2603.11427), published in *APL Photonics* as an Editor's Pick.
-
-In September 2026 I moved to Ottawa to start my PhD in Physics, where I also work as a teaching assistant. Alongside experiments, I enjoy scientific communication — especially turning physics into clear figures and illustrations.
+Outside the lab I like scientific communication: turning physics into figures, animations and 3D renders, like the ones on this site.

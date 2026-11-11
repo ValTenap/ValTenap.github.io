@@ -1,121 +1,74 @@
 ---
 layout: default
 ---
-
 {% assign cv = site.data.cv %}
-<div class="row g-5 mb-5">
-  <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-4">Curriculum Vitae</h3>
-
+{% assign pubs = site.data.publications %}
+<div class="wrap">
+  <header class="page-head">
+    <h1>{{ page.title }}</h1>
+    {% if page.lede %}<p>{{ page.lede }}</p>{% endif %}
     {{ content }}
+  </header>
 
-    {% if cv.education %}
-    <h4 class="fw-bold mt-5 mb-3">Education</h4>
-    {% for item in cv.education %}
-      <div class="mb-4">
-        <div class="d-flex justify-content-between flex-wrap">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.period }}</span>
+  {% assign groups = "education:Education,experience:Research experience,teaching:Teaching" | split: "," %}
+  {% for g in groups %}
+    {% assign kv = g | split: ":" %}{% assign items = cv[kv[0]] %}
+    {% if items and items.size > 0 %}
+    <section class="cv-section">
+      <h2>{{ kv[1] }}</h2>
+      <div>
+        {% for i in items %}
+        <div class="cv-item">
+          <div class="row"><span class="what">{{ i.title }}</span><span class="when">{{ i.period }}</span></div>
+          <div class="where">{{ i.institution }}{% if i.location %}, {{ i.location }}{% endif %}</div>
+          {% if i.description and i.description != "" %}<p>{{ i.description }}</p>{% endif %}
         </div>
-        <div><em>{{ item.institution }}</em>{% if item.location %} · {{ item.location }}{% endif %}</div>
-        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
+        {% endfor %}
       </div>
-    {% endfor %}
+    </section>
     {% endif %}
+  {% endfor %}
 
-    {% if cv.experience %}
-    <h4 class="fw-bold mt-5 mb-3">Research Experience</h4>
-    {% for item in cv.experience %}
-      <div class="mb-4">
-        <div class="d-flex justify-content-between flex-wrap">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.period }}</span>
-        </div>
-        <div><em>{{ item.institution }}</em>{% if item.location %} · {{ item.location }}{% endif %}</div>
-        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
+  {% if pubs.works.size > 0 %}
+  <section class="cv-section">
+    <h2>Publications</h2>
+    <div>
+      {% for p in pubs.works %}
+      <div class="cv-item">
+        <div class="what">{{ p.title }}</div>
+        <div>{% for a in p.authors %}{% if a == pubs.me %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+        <div class="where">{{ p.venue }}{% if p.volume and p.volume != "" %} {{ p.volume }}{% endif %} ({{ p.year }}){% if p.note and p.note != "" %}, {{ p.note }}{% endif %}</div>
       </div>
-    {% endfor %}
-    {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
 
-    {% if cv.teaching %}
-    <h4 class="fw-bold mt-5 mb-3">Teaching</h4>
-    {% for item in cv.teaching %}
-      <div class="mb-3">
-        <div class="d-flex justify-content-between flex-wrap">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.period }}</span>
-        </div>
-        <div><em>{{ item.institution }}</em></div>
-        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
-      </div>
-    {% endfor %}
-    {% endif %}
+  {% if cv.theses %}
+  <section class="cv-section">
+    <h2>Thesis</h2>
+    <div>{% for i in cv.theses %}<div class="cv-item"><div class="what">{{ i.title }}</div><p>{{ i.detail }}</p></div>{% endfor %}</div>
+  </section>
+  {% endif %}
 
-    {% if site.data.publications.works.size > 0 %}
-    <h4 class="fw-bold mt-5 mb-3">Publications</h4>
-    <ol>
-    {% for pub in site.data.publications.works %}
-      <li class="mb-3">
-        <strong>{{ pub.title }}</strong><br>
-        {% for author in pub.authors %}{% if author == site.data.publications.me %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}<br>
-        <em>{{ pub.venue }}</em>{% if pub.volume and pub.volume != "" %} {{ pub.volume }}{% endif %}{% if pub.pages and pub.pages != "" %}, {{ pub.pages }}{% endif %} ({{ pub.year }}){% if pub.note and pub.note != "" %} — {{ pub.note }}{% endif %}.
-        {% if pub.doi and pub.doi != "" %}<a href="https://doi.org/{{ pub.doi }}">DOI</a>{% elsif pub.arxiv and pub.arxiv != "" %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv:{{ pub.arxiv }}</a>{% endif %}
-      </li>
-    {% endfor %}
-    </ol>
-    {% endif %}
+  {% if cv.presentations %}
+  <section class="cv-section">
+    <h2>Presentations</h2>
+    <div>{% for i in cv.presentations %}<div class="cv-item"><div class="row"><span class="what">{{ i.title }}</span><span class="when">{{ i.period }}</span></div><p>{{ i.detail }}</p></div>{% endfor %}</div>
+  </section>
+  {% endif %}
 
-    {% if cv.theses %}
-    <h4 class="fw-bold mt-5 mb-3">Theses</h4>
-    {% for item in cv.theses %}
-      <div class="mb-3">
-        <strong>{{ item.title }}</strong><br>
-        {{ item.detail }}
-      </div>
-    {% endfor %}
-    {% endif %}
+  {% if cv.awards %}
+  <section class="cv-section">
+    <h2>Awards</h2>
+    <div>{% for i in cv.awards %}<div class="cv-item"><div class="row"><span class="what">{{ i.title }}</span><span class="when">{{ i.period }}</span></div>{% if i.institution %}<div class="where">{{ i.institution }}</div>{% endif %}</div>{% endfor %}</div>
+  </section>
+  {% endif %}
 
-    {% if cv.presentations %}
-    <h4 class="fw-bold mt-5 mb-3">Presentations</h4>
-    {% for item in cv.presentations %}
-      <div class="mb-3">
-        <div class="d-flex justify-content-between flex-wrap">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.period }}</span>
-        </div>
-        <div>{{ item.detail }}</div>
-      </div>
-    {% endfor %}
-    {% endif %}
-
-    {% if cv.awards %}
-    <h4 class="fw-bold mt-5 mb-3">Awards and Scholarships</h4>
-    {% for item in cv.awards %}
-      <div class="mb-2">
-        <strong>{{ item.period }} · {{ item.title }}</strong>{% if item.institution %}<span> — {{ item.institution }}</span>{% endif %}
-      </div>
-    {% endfor %}
-    {% endif %}
-
-    {% if cv.service %}
-    <h4 class="fw-bold mt-5 mb-3">Service and Outreach</h4>
-    {% for item in cv.service %}
-      <div class="mb-3">
-        <div class="d-flex justify-content-between flex-wrap">
-          <strong>{{ item.title }}</strong>
-          <span>{{ item.period }}</span>
-        </div>
-        <div><em>{{ item.institution }}</em></div>
-        {% if item.description %}<p class="mt-2">{{ item.description }}</p>{% endif %}
-      </div>
-    {% endfor %}
-    {% endif %}
-
-    {% if cv.skills %}
-    <h4 class="fw-bold mt-5 mb-3">Skills</h4>
-    {% for item in cv.skills %}
-      <p><strong>{{ item.category }}:</strong> {{ item.details }}</p>
-    {% endfor %}
-    {% endif %}
-  </div>
+  {% if cv.skills %}
+  <section class="cv-section">
+    <h2>Skills</h2>
+    <div>{% for i in cv.skills %}<div class="cv-item"><div class="what">{{ i.category }}</div><p>{{ i.details }}</p></div>{% endfor %}</div>
+  </section>
+  {% endif %}
 </div>
